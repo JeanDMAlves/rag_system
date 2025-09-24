@@ -11,3 +11,4 @@ wheels/
 
 .env
 ._*
+app.db

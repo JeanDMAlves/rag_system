@@ -76,7 +76,6 @@ class RAG:
     
     # Dividir o documento em pedaços menores e gerenciáveis
     def chunking(self, text):
-
         tokenizer = AutoTokenizer.from_pretrained(self.embedding_model)
         
         # Transforma o texto em tokens
@@ -303,7 +302,7 @@ class RAG:
         cross_encoder_input = [[query, chunk] for chunk in chunks_recuperados]
 
         # Calcular scores de relevância
-        cross_scores = cross_encoder.predict(cross_encoder_input)
+        cross_scores = cross_encoder.predict(cross_encoder_input, show_progress_bar=True)
         
         # Combinar scores com índices e ordenar de maneira decrescente
         scored_results = list(zip(cross_scores, indices_recuperados))
