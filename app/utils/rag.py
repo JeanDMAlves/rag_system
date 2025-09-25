@@ -1,4 +1,4 @@
-from pypdf import PdfReader
+import pymupdf
 from transformers import AutoTokenizer
 from sentence_transformers import SentenceTransformer, CrossEncoder
 from langchain.text_splitter import RecursiveCharacterTextSplitter
@@ -7,6 +7,7 @@ import torch
 import requests
 import time
 import os
+import math
 
 class RAG:
     def __init__(
@@ -18,7 +19,8 @@ class RAG:
             cross_encoder_threshold = 0.2,
             embedding_model = 'intfloat/e5-large-v2',
             cross_encoder_model = 'cross-encoder/ms-marco-MiniLM-L-6-v2',
-            llm_generation_model = 'openai/gpt-4o'
+            llm_generation_model = 'openai/gpt-4o',
+            openrouter_api_key = os.environ.get('OPENROUTER_API_KEY')
         ):
         self.chunk_size = chunk_size
         self.chunk_overlap = chunk_overlap
@@ -28,31 +30,17 @@ class RAG:
         self.embedding_model = embedding_model
         self.cross_encoder_model = cross_encoder_model
         self.llm_generation_model = llm_generation_model
-        self.openrouter_api_key = os.environ.get('OPENROUTER_API_KEY')
+        self.openrouter_api_key = openrouter_api_key
 
     def find_device(self) -> str:
         return 'cuda' if torch.cuda.is_available() else 'cpu'
     
-    def load_document(self, path: str):
-        if '.pdf' in path:
-            raw_text = self.load_pdf(path)
-            file_name = path.split('/')[-1]
-            file_name = file_name.replace('.pdf', '.txt')
-            # Salvar o texto em txt 
-            self.save_text_from_string(raw_text, path_to_save=f'./txts/{file_name}')
-            return raw_text
-        elif '.txt' in path:
-            return self.load_txt(path)
-        raise Exception('Formato não suportado')
-
     # Ler o documento de texto (PDF)
-    def load_pdf(self, file):
-        reader = PdfReader(file)
-        raw_text = ''
-        for page in reader.pages:
-            text = page.extract_text()
-            if text:
-                raw_text += text + '\n'
+    def load_pdf(self, path):
+        doc = pymupdf.open(path)
+        raw_text = ""
+        for page in doc:
+            raw_text += page.get_text("text")
         return raw_text
     
     # Ler o documento de texto (txt)
@@ -70,39 +58,85 @@ class RAG:
                 continue
         raise Exception('Não foi possível ler o arquivo enviado!')
     
-    def save_text_from_string(self, text: str, path_to_save: str):
-        with open(path_to_save, 'w', encoding='utf-8') as f:
-            f.write(text)
-    
     # Dividir o documento em pedaços menores e gerenciáveis
-    def chunking(self, text):
-        tokenizer = AutoTokenizer.from_pretrained(self.embedding_model)
-        
-        # Transforma o texto em tokens
-        tokens = tokenizer.encode(text)
-        
-        # Calcula a sobreposição dos tokens
-        tokens_overlap = int(self.chunk_size * (self.chunk_overlap / 100))
-        step = self.chunk_size - tokens_overlap
+    def chunking(self, text: str):
+        tokenizer = AutoTokenizer.from_pretrained(self.embedding_model, use_fast=True)
+        max_allowed = tokenizer.model_max_length if hasattr(tokenizer, "model_max_length") else 512
 
+        safe_max = max_allowed - 32
+        chunk_size_tokens = min(self.chunk_size, safe_max)
+
+        # overlap em tokens (você usava percentual)
+        tokens_overlap = int(chunk_size_tokens * (self.chunk_overlap / 100))
+        step_tokens = max(1, chunk_size_tokens - tokens_overlap)
+
+        # estima chars por token com uma amostra (mais preciso que heurística fixa)
+        sample_text = text[:2000]  # 2000 chars é suficiente normalmente
+        try:
+            sample_tokens = tokenizer.encode(sample_text, add_special_tokens=False)
+            if len(sample_tokens) > 0:
+                avg_chars_per_token = len(sample_text) / len(sample_tokens)
+            else:
+                avg_chars_per_token = 4.0
+        except Exception:
+            avg_chars_per_token = 4.0
+
+        # calcula tamanhos em caracteres para as fatias iniciais
+        char_chunk = max(200, int(math.ceil(chunk_size_tokens * avg_chars_per_token)))
+        char_step = max(50, int(math.ceil(step_tokens * avg_chars_per_token)))
+
+        text_len = len(text)
         text_chunks = []
-        # Divide os tokens em chunks
-        for i in range(0, len(tokens), step):
-            chunk_tokens = tokens[i:i + self.chunk_size]
-            
-            if not chunk_tokens:
-                continue
-            
-            text_chunk = tokenizer.decode(chunk_tokens, skip_special_tokens=True)
-            text_chunks.append(text_chunk)
         
-        return text_chunks
+        # varre o texto em janelas de caracteres (não tokeniza tudo)
+        for start_char in range(0, text_len, char_step):
+            end_char = min(text_len, start_char + char_chunk)
+            candidate = text[start_char:end_char]
+
+            # tokeniza apenas a fatia
+            token_ids = tokenizer.encode(candidate, add_special_tokens=False)
+
+            if len(token_ids) <= chunk_size_tokens:
+                # cabe num chunk só
+                chunk_text = tokenizer.decode(token_ids, skip_special_tokens=True, clean_up_tokenization_spaces=True)
+                if chunk_text.strip():
+                    text_chunks.append(chunk_text)
+            else:
+                # se a fatia ainda é maior que chunk_size em tokens,
+                # divide a lista de ids em subchunks token-wise (com overlap)
+                for i in range(0, len(token_ids), step_tokens):
+                    sub_ids = token_ids[i:i + chunk_size_tokens]
+                    if not sub_ids:
+                        continue
+                    chunk_text = tokenizer.decode(sub_ids, skip_special_tokens=True, clean_up_tokenization_spaces=True)
+                    if chunk_text.strip():
+                        text_chunks.append(chunk_text)
+
+            # Early Stopping
+            if end_char == text_len:
+                break
+        
+        # opcional: remover chunks muito curtos ou duplicados consecutivos
+        cleaned = []
+        prev = None
+        for c in text_chunks:
+            s = c.strip()
+            if len(s) < 10:
+                continue
+            if prev is not None and s == prev:
+                continue
+            cleaned.append(s)
+            prev = s
+
+        return cleaned
     
     def chunking_rcts(self, text: str):
         """
         Divide o texto em pedaços coesos (sem quebrar palavras) usando RecursiveCharacterTextSplitter
         e garante que cada pedaço não ultrapasse o limite de tokens do modelo de embedding.
         """
+        tokenizer = AutoTokenizer.from_pretrained(self.embedding_model)
+
         # 1. Split inicial com RecursiveCharacterTextSplitter
         splitter = RecursiveCharacterTextSplitter(
             chunk_size=self.chunk_size * 4,   # usa caracteres como proxy (4 chars ≈ 1 token)
@@ -114,7 +148,7 @@ class RAG:
         # 2. Ajustar cada pedaço com base no tokenizer
         final_chunks = []
         for chunk in initial_chunks:
-            tokens = self.tokenizer.encode(chunk, add_special_tokens=False)
+            tokens = tokenizer.encode(chunk, add_special_tokens=False)
 
             # Se o chunk couber no limite, mantém
             if len(tokens) <= self.chunk_size:
@@ -125,7 +159,7 @@ class RAG:
             step = self.chunk_size - int(self.chunk_size * self.chunk_overlap / 100)
             for i in range(0, len(tokens), step):
                 sub_tokens = tokens[i:i + self.chunk_size]
-                sub_chunk = self.tokenizer.decode(sub_tokens, skip_special_tokens=True)
+                sub_chunk = tokenizer.decode(sub_tokens, skip_special_tokens=True)
                 if sub_chunk.strip():
                     final_chunks.append(sub_chunk)
 
@@ -149,7 +183,7 @@ class RAG:
             convert_to_tensor = True,
             show_progress_bar = True,
             device = self.find_device(),
-            batch_size = 32
+            batch_size = 64
         )
         return passage_embeddings
 
@@ -241,7 +275,6 @@ class RAG:
         response = self.llm_api(query, system_prompt, max_retries=3)
         return response if response else ""
         
-
     # Multi-query + HyDE
     # Encontramos os pedaços mais relevantes usando similaridade vetorial
     def hybrid_search(

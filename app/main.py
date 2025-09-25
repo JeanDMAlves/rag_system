@@ -28,7 +28,8 @@ def get_rag_system():
         cross_encoder_threshold = 0.2,
         embedding_model = os.environ.get('EMBEDDING_MODEL'),
         cross_encoder_model = os.environ.get('CROSS_ENCODER_MODEL'),
-        llm_generation_model = os.environ.get('LLM_GENERATION_MODEL')
+        llm_generation_model = os.environ.get('LLM_GENERATION_MODEL'),
+        openrouter_api_key = os.environ.get('OPENROUTER_API_KEY')
     )
     return rag_system
 
@@ -105,6 +106,7 @@ if st.session_state.chunks is None:
         st.rerun()
 else: 
     # Se o documento já estiver carregado (!= None), carregamos a página para fazer perguntas
+    st.write(f'Quantidade de Chunks: {len(st.session_state.chunks)} || Dimensões dos embeddings: ({st.session_state.passage_embeddings.shape[0]}, {st.session_state.passage_embeddings.shape[1]})')
     question = st.text_area('Qual sua pergunta?')
 
     if st.button(
