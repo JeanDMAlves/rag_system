@@ -1,0 +1,122 @@
+[
+    {
+        "question": "O que é o Manual Siafi?",
+        "relevant_chunks": [
+            "1.1 - O Manual SIAFI é um documento que registra, de forma estruturada e sistemática, as normas e procedimentos operacionais do Sistema Integrado de Administração Financeira do Governo Federal – SIAFI, do ponto de vista do usuário."
+        ]
+    },
+    {
+        "question": "Quais princípios devem ser observados na elaboração e atualização do manual?",
+        "relevant_chunks": [
+            "3 - PRINCÍPIOS 3.1 - Na elaboração e atualização do Manual, devem ser observados os seguintes princípios: 3.1.1 - Universalidade - atendimento a todos os usuários e em todos os níveis de conhecimento; 3.1.2 - Unidade - endereço único de informações, normas e instruções; 3.1.3 - Modularidade - cada capítulo/volume é autossuficiente; e, cada parte reporta ao todo (visão sistemática)."
+        ]
+    },
+    {
+        "question": "Como o manual está estruturado?",
+        "relevant_chunks": [
+            "7.1 - O Manual está estruturado em módulos, o que garante maior flexibilidade no seu uso, possibilitando a consulta no nível de interesse e de conhecimento do usuário."
+        ]
+    },
+    {
+        "question": "Qual o significado de Comissão de Repasse Vencida?",
+        "relevant_chunks": [
+            "COMISSÃO DE REPASSE VENCIDA - É um percentual aplicado sobre o saldo devedor do início do período."
+        ]
+    },
+    {
+        "question": "Em qual ano o SIAFI foi implantado como sistema computacional?",
+        "relevant_chunks": [
+            "1 - O SIAFI, como sistema computacional, foi implantado em 1987, tornando-se, desde então, em importante instrumento para o acompanhamento e controle da execução orçamentária, financeira e contábil do Governo Federal, se configurando, atualmente, no maior e mais abrangente instrumento de administração das finanças públicas, dentre os seus congêneres conhecidos no mundo."
+        ]
+    },
+    {
+        "question": "Qual decreto viabilizou a implantação do SIAFI?",
+        "relevant_chunks": [
+            "4.1 - A implantação do SIAFI foi viabilizada a partir da criação da STN, vinculada ao Ministério da Fazenda, através do Decreto n. 92.452, de 10 de março de 1986, com o objetivo de promover a modernização e a integração dos sistemas de programação financeira, de execução orçamentária e de contabilidade dos Órgãos e Entidades Públicas do Governo Federal. Para desincumbir-se de suas atribuições, recebeu competente autorização para contratar, junto ao Serviço Federal de Processamento de Dados - SERPRO, a implementação de um sistema computacional, que fornecesse todas as informações necessárias, de maneira segura e tempestiva."
+        ]
+    },
+    {
+        "question": "Quantos operadores acessam o sistema para exercício de suas funções diariamente?",
+        "relevant_chunks": [
+            "2 - São cerca de 5.000 UG Executoras e 30.000 operadores, em todo o Brasil, que acessam o Sistema para o exercício de suas funções diárias, compreendendo a inclusão de dados (diretamente ou por integração) e consultas, sob a forma on-line ou por meio de relatórios impressos."
+        ]
+    },
+    {
+        "question": "O que é o Plano Interno (PI)?",
+        "relevant_chunks": [
+            "a) O PI é o instrumento de detalhamento e de acompanhamento das Ações e e Subações do Órgão, constituindo-se detalhamento das Subações. Pode ser associado a um centro de custo dentro da organização permitindo, dessa forma acompanhar as despesas realizadas por PI. Bem como acompanhar as metas Finalísticas, PI - Físicos, onde não ocorre dispêndio Financeiro."
+        ]
+    },
+    {
+        "question": "O que é o Limite de Saque com Vinculação de Pagamento?",
+        "relevant_chunks": [
+            "8.2.1 - O Limite de Saque com Vinculação de Pagamento é o processo pelo qual o órgão central de programação financeira controla os pagamentos dentro de cada fonte de recursos, de forma a vincular a liberação com a respectiva despesa."
+        ]
+    },
+    {
+        "question": "Qual a finalidade da Conta Única do Tesouro Nacional?",
+        "relevant_chunks": [
+            "3.1.1 A CONTA ÚNICA do Tesouro Nacional, mantida no Banco Central do Brasil, é utilizada para registrar a movimentação dos recursos f i n a n c e i r o s d e r e s p o n s a b i l i d a d e d o s ó r g ã o s e e n t i d a d e s d a Administração Pública e das pessoas jurídicas de direito privado que façam uso do SIAFI por meio de acordo de cooperação técnica firmado com a STN."
+        ]
+    },
+    {
+        "question": "Quem será responsabilizado em caso de um pagamento indevido causado por um erro da OB?",
+        "relevant_chunks": [
+            "4.1 Qualquer pagamento indevido, que decorra de erro da OB, será de exclusiva responsabilidade da unidade gestora responsável pelo pagamento."
+        ]
+    },
+    {
+        "question": "Qual a utilidade do documento GPS (Guia da Previdência Social)?",
+        "relevant_chunks": [
+            "3.1.3 - GPS - Permitir a agilização do pagamento das contribuições destinadas ao Fundo de Previdência e Assistência Social - FPAS, no âmbito das UG que utilizam o SIAFI, e do recolhimento do valor pago, através de transferências INTRA-SIAFI de recursos entre a UG recolhedora e o INSS."
+        ]
+    },
+    {
+        "question": "Qual a utilidade do documento GRU? (Guia de Recolhimento da União)",
+        "relevant_chunks": [
+            "3.1.4 - GRU, e o documento utilizado pelas unidades do Governo Federal para a arrecadação de suas receitas, exceto para aquelas arrecadadas por DARF e GPS, via rede bancaria ou diretamente no SIAFI quando o recolhedor for Unidade Gestora (UG). Será utilizada para as receitas arrecadadas via rede bancaria pelo contribuinte externo, e destina-se a substituir a modalidade de deposito direto na CTU - Conta Única da União."
+        ]
+    },
+    {
+        "question": "O que é a Administração Pública Federal direta e indireta?",
+        "relevant_chunks": [ 
+            "3.1 - Administração pública federal direta e indireta - conjunto formado pelos órgãos integrantes da Administração Federal Direta, pelas Autarquias, inclusive as de regime especial, pelas Fundações, instituídas ou mantidas pelo Poder Público Federal, bem como pelas Empresas Públicas e Sociedades de Economia Mista controladas, direta ou indiretamente, pela União;"
+        ]
+    },
+    {
+        "question": "O que abrange a Transferência Voluntária?",
+        "relevant_chunks": [
+            "3.2 – Transferência Voluntária (TV) - compreende a entrega de recursos correntes ou de capital a outro ente da Federação, a título de cooperação, auxílio ou assistência financeira. Nesse caso não se incluem aqueles decorrentes de mandamento constitucional, legal, os destinados ao sistema único de Saúde, bem como as descentralizações de recursos a Estados, Distrito Federal e Municípios para a execução de ações cuja competência seja exclusiva da União."
+        ]
+    },
+    {
+        "question": "Qual a definição de profissional em contabilidade?",
+        "relevant_chunks": [
+            "3.5.3.1 – Entende-se por profissional em contabilidade o servidor público ocupante de cargo efetivo ou de comissão ou empregado público, ou de militar regido, de nível superior ou médio, que tenha formação em contabilidade e esteja com o registro ativo e regular no Conselho Regional de Contabilidade."
+        ]
+    },
+    {
+        "question": "O que é a restrição contábil?",
+        "relevant_chunks": [
+            "4.3 - RESTRIÇÃO CONTÁBIL: inconsistência ou desequilíbrio considerado relevante, pois altera o entendimento sobre as Demonstrações Contábeis."
+        ]
+    },
+    {
+        "question": "O que se tem como objetivo quando se fala de demonstrações contábeis?",
+        "relevant_chunks": [
+            "5.1.1 – O objetivo das demonstrações contábeis é divulgar aos usuários os ativos e passivos, as receitas e despesas orçamentárias, bem como as variações patrimoniais aumentativas e diminutivas de determinada entidade, durante o exercício financeiro ou determinado período."
+        ]
+    },
+    {
+        "question": "O que se entende como finalidade no contexto da Conformidade de Operadores?",
+        "relevant_chunks": [
+            "2.1 - A Conformidade de Operadores, que integra o processo de gerenciamento de acesso e segurança do sistema tem por objetivo automatizar a rotina periódica de confirmação ou desativação de usuários pela própria UG, através de seu Operador Representante ou Substituto."
+        ]
+    },
+    {
+        "question": "Do que são chamadas as despesas empenhadas, mas não pagas até 31 de dezembro?",
+        "relevant_chunks": [
+            "2.1 - Consideram-se Restos a Pagar as despesas empenhadas, mas não pagas até 31 de dezembro, estando a sua execução condicionada aos limites fixados à conta das fontes de recursos correspondentes, com base na legislação vigente."
+        ]
+    }
+]

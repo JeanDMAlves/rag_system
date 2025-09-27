@@ -37,7 +37,7 @@ class RAG:
     
     # Ler o documento de texto (PDF)
     def load_pdf(self, path):
-        doc = pymupdf.open(path)
+        doc = pymupdf.open(stream=path.read(), filetype='pdf')
         raw_text = ""
         for page in doc:
             raw_text += page.get_text("text")
@@ -66,7 +66,7 @@ class RAG:
         safe_max = max_allowed - 32
         chunk_size_tokens = min(self.chunk_size, safe_max)
 
-        # overlap em tokens (você usava percentual)
+        # overlap em tokens
         tokens_overlap = int(chunk_size_tokens * (self.chunk_overlap / 100))
         step_tokens = max(1, chunk_size_tokens - tokens_overlap)
 
