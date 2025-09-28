@@ -65,3 +65,5 @@ for _, row in df.iterrows():
     print(f'PERGUNTA: {row['pergunta']}')
     print(row['resposta_rag'])
 # %%
+df[['bertscore_precision', 'bertscore_recall', 'bertscore_f1']]
+# %%
