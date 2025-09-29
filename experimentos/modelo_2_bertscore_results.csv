@@ -1,0 +1,192 @@
+pergunta,resposta_rag,ground_truth,bertscore_precision,bertscore_recall,bertscore_f1
+O que é o Manual Siafi?,"Com base na análise dos trechos fornecidos, que contêm referências a ""Manual SIAFI"", posso esclarecer que:
+
+**O Manual SIAFI (Sistema Integrado de Administração Financeira) é um documento ou conjunto de documentos que serve como guia de referência para usuários do sistema SIAFI.**
+
+---
+
+### **O que é o Manual SIAFI?**
+
+1.  **Finalidade Principal**:
+    -   Serve como um manual de instruções e procedimentos para operar o Sistema Integrado de Administração Financeira (SIAFI).
+    -   Inclui desde conceitos básicos até procedimentos complexos, como emissão de documentos, consultas, e atualização de dados.
+
+2.  **Conteúdo Típico**:
+    -   **Instruções de Uso**: Passo a passo para realizar tarefas no sistema.
+    -   **Normas e Padronizações**: Define padrões para preenchimento de campos, codificações, e formatos de dados.
+    -   **Exemplos e Formulários**: Inclui exemplos de telas, formulários, e transações.
+    -   **Referências**: Inclui códigos, tabelas, e glossários de termos técnicos.
+
+3.  **Aspectos Técnicos**:
+    -   **Estrutura**: Organizado em seções ou módulos, cada um tratando de um aspecto do sistema (ex.: contabilidade, pagamentos, relatórios).
+    -   **Atualizações**: O manual é atualizado periodicamente para refletir mudanças no sistema.
+
+4.  **Acesso e Utilização**:
+    -   **Acesso Restrito**: Geralmente restrito a usuários autorizados do sistema.
+    -   **Suporte**: Usado para treinamento de novos usuários e como referência para usuários experientes.
+
+---
+
+### **Por que isso é importante?**
+-   **Padronização**: Garante que todos os usuários sigam os mesmos procedimentos, reduzindo erros.
+-   **Eficiência**: Usuários podem realizar tarefas mais rapidamente com instruções claras.
+-   **Conformidade**: Ajuda a garantir que operações estejam em conformidade com normas contábeis e financeiras.
+
+---","1.1 - O Manual SIAFI é um documento que registra, de forma estruturada e sistemática, as normas e procedimentos operacionais do Sistema Integrado de Administração Financeira do Governo Federal – SIAFI, do ponto de vista do usuário.",0.5778038501739502,0.7376496195793152,0.6480149626731873
+Quais princípios devem ser observados na elaboração e atualização do manual?,"Com base no contexto fornecido, os princípios que devem ser observados na elaboração e atualização do manual são:
+
+1. Universalidade - atendimento a todos os usuários e em todos os níveis de conhecimento [Fonte 2, Fonte 7]
+2. Unidade - endereço único de informações, normas e instruções [Fonte 7]
+3. Modularidade - cada capítulo/volume é autossuficiente; e cada parte reporta ao todo (visão sistemática) [Fonte 7]
+
+Estes princípios estão estabelecidos na metodologia de elaboração do manual SIAFI conforme as fontes citadas.","3 - PRINCÍPIOS 3.1 - Na elaboração e atualização do Manual, devem ser observados os seguintes princípios: 3.1.1 - Universalidade - atendimento a todos os usuários e em todos os níveis de conhecimento; 3.1.2 - Unidade - endereço único de informações, normas e instruções; 3.1.3 - Modularidade - cada capítulo/volume é autossuficiente; e, cada parte reporta ao todo (visão sistemática).",0.8326790928840637,0.8542590141296387,0.8433310389518738
+Como o manual está estruturado?,"O manual está estruturado em módulos, capítulos, seções e assuntos organizados de forma lógica e sequencial, com codificação específica para cada nível. [Fonte 2]
+
+Mais especificamente:
+- O manual é dividido em capítulos, seções e assuntos identificados por um código estruturado de seis posições (XX.YY.ZZ) [Fonte 5, Fonte 14]
+- Os dois primeiros dígitos (XX) identificam os capítulos [Fonte 14]
+- Os dois dígitos intermediários (YY) identificam as seções dos capítulos [Fonte 14]
+- Os dois dígitos finais (ZZ) identificam os assuntos das seções [Fonte 14, Fonte 69]
+
+Essa estrutura modular garante flexibilidade no uso, permitindo consulta no nível de interesse do usuário sem prejudicar a visão sistêmica do conjunto. [Fonte 2]","7.1 - O Manual está estruturado em módulos, o que garante maior flexibilidade no seu uso, possibilitando a consulta no nível de interesse e de conhecimento do usuário.",0.6245214939117432,0.7940661907196045,0.6991621255874634
+Qual o significado de Comissão de Repasse Vencida?,"Com base nos trechos fornecidos, a **Comissão de Repasse Vencida** é um percentual aplicado sobre o saldo devedor do início do período. [Fonte 1]
+
+Além disso, aparece classificada como um tipo de encargo/evento financeiro com código 18 em várias transações do SIAFI. [Fontes 3, 4, 6, 9, 15, 41, 48, 72]",COMISSÃO DE REPASSE VENCIDA - É um percentual aplicado sobre o saldo devedor do início do período.,0.6485199928283691,0.7761517763137817,0.7066188454627991
+Em qual ano o SIAFI foi implantado como sistema computacional?,O SIAFI foi implantado como sistema computacional em 1987. [Fonte 6],"1 - O SIAFI, como sistema computacional, foi implantado em 1987, tornando-se, desde então, em importante instrumento para o acompanhamento e controle da execução orçamentária, financeira e contábil do Governo Federal, se configurando, atualmente, no maior e mais abrangente instrumento de administração das finanças públicas, dentre os seus congêneres conhecidos no mundo.",0.8481936454772949,0.6660011410713196,0.746136486530304
+Qual decreto viabilizou a implantação do SIAFI?,"Com base nas fontes fornecidas, o decreto que viabilizou a implantação do SIAFI foi o Decreto nº 93.872, de 23 de dezembro de 1986. Este decreto está mencionado na Fonte 25 (Chunk 9211), que cita:
+
+""o secretario do tesouro nacional... tendo em vista o disposto no art. 155 do decreto n. 93.872, de 23 de dezembro de 1986""
+
+Além disso, a Fonte 39 (Chunk 579) também faz referência a este decreto:
+
+""a implantação do siafi foi viabilizada a partir da criação da stn... através do decreto n. 92.452, de 10 de março de 1986""
+
+No entanto, o decreto principal que estabeleceu o SIAFI foi o Decreto nº 93.872, de 1986, conforme detalhado na documentação. 
+
+Portanto, a resposta é:
+
+**Decreto nº 93.872, de 23 de dezembro de 1986**<｜begin▁of▁sentence｜>","4.1 - A implantação do SIAFI foi viabilizada a partir da criação da STN, vinculada ao Ministério da Fazenda, através do Decreto n. 92.452, de 10 de março de 1986, com o objetivo de promover a modernização e a integração dos sistemas de programação financeira, de execução orçamentária e de contabilidade dos Órgãos e Entidades Públicas do Governo Federal. Para desincumbir-se de suas atribuições, recebeu competente autorização para contratar, junto ao Serviço Federal de Processamento de Dados - SERPRO, a implementação de um sistema computacional, que fornecesse todas as informações necessárias, de maneira segura e tempestiva.",0.6905167102813721,0.6628600358963013,0.6764057874679565
+Quantos operadores acessam o sistema para exercício de suas funções diariamente?,"Com base no contexto fornecido, existem cerca de 30.000 operadores que acessam o sistema para o exercício de suas funções diárias em todo o Brasil [Fonte 2].","2 - São cerca de 5.000 UG Executoras e 30.000 operadores, em todo o Brasil, que acessam o Sistema para o exercício de suas funções diárias, compreendendo a inclusão de dados (diretamente ou por integração) e consultas, sob a forma on-line ou por meio de relatórios impressos.",0.8305609822273254,0.7508591413497925,0.7887015342712402
+O que é o Plano Interno (PI)?,"O Plano Interno (PI) é um instrumento de planejamento e acompanhamento das ações do órgão, utilizado como forma de detalhamento do projeto ou atividade, de uso exclusivo de cada ministério ou órgão. [Fontes 2, 4, 17, 36, 54]
+
+Características principais:
+- Especifica quais projetos ou atividades deverão ter seus créditos detalhados [Fonte 4]
+- Constitui-se como detalhamento das subações [Fonte 17]
+- Pode ser associado a um centro de custo dentro da organização [Fonte 23]
+- Pode ser dividido em etapas, que são especificações mais detalhadas das atividades [Fonte 23]
+- Possui código alfanumérico de até 11 posições [Fontes 3, 4, 12, 15]
+
+O PI serve para acompanhar as despesas realizadas e as metas finalísticas, podendo ter acompanhamento físico, financeiro ou físico-financeiro [Fonte 23]. Todo PI está vinculado a um único grupo esfera-uo-pt do orçamento [Fonte 21].","a) O PI é o instrumento de detalhamento e de acompanhamento das Ações e e Subações do Órgão, constituindo-se detalhamento das Subações. Pode ser associado a um centro de custo dentro da organização permitindo, dessa forma acompanhar as despesas realizadas por PI. Bem como acompanhar as metas Finalísticas, PI - Físicos, onde não ocorre dispêndio Financeiro.",0.6904520988464355,0.7975002527236938,0.7401254177093506
+O que é o Limite de Saque com Vinculação de Pagamento?,"Com base nos trechos fornecidos, o **Limite de Saque com Vinculação de Pagamento** é um mecanismo de controle financeiro utilizado pelo órgão central de programação financeira para gerenciar pagamentos dentro de cada fonte de recursos do Tesouro Nacional. 
+
+Este limite vincula a liberação de recursos a despesas específicas, de acordo com a categoria de gasto e código de vinculação estabelecidos [Fontes 5, 23, 65]. 
+
+Características principais:
+- Representa a disponibilidade financeira ""on-line"" existente na Conta Única para realização de pagamentos [Fonte 46]
+- Só pode ser utilizado para pagamento de despesas relacionadas à vinculação correspondente [Fontes 2, 7]
+- É controlado por meio da conta contábil 11112.20.01 (Limite de Saque com Vinculação de Pagamento) [Fontes 29, 57]
+- Permite que os órgãos realizem saques desde que vinculados à finalidade específica autorizada [Fonte 34]
+
+O sistema SIAfi gerencia esse limite através de processos automatizados que controlam os pagamentos dentro de cada fonte de recursos, garantindo que sejam aplicados apenas nas despesas correspondentes à vinculação estabelecida [Fonte 5].","8.2.1 - O Limite de Saque com Vinculação de Pagamento é o processo pelo qual o órgão central de programação financeira controla os pagamentos dentro de cada fonte de recursos, de forma a vincular a liberação com a respectiva despesa.",0.6811379790306091,0.8026681542396545,0.7369261384010315
+Qual a finalidade da Conta Única do Tesouro Nacional?,"A Conta Única do Tesouro Nacional tem por finalidade acolher as disponibilidades financeiras da União a serem movimentadas pelas unidades gestoras (UG) da administração federal, direta e indireta, e outras entidades integrantes do Sistema Integrado de Administração Financeira do Governo Federal (SIAFI), na modalidade ""on-line"". [Fontes 1, 2, 4, 20, 29]","3.1.1 A CONTA ÚNICA do Tesouro Nacional, mantida no Banco Central do Brasil, é utilizada para registrar a movimentação dos recursos f i n a n c e i r o s d e r e s p o n s a b i l i d a d e d o s ó r g ã o s e e n t i d a d e s d a Administração Pública e das pessoas jurídicas de direito privado que façam uso do SIAFI por meio de acordo de cooperação técnica firmado com a STN.",0.6385977864265442,0.5930945873260498,0.6150056719779968
+Quem será responsabilizado em caso de um pagamento indevido causado por um erro da OB?,"Com base no contexto fornecido, a responsabilidade por pagamentos indevidos causados por erro na Ordem Bancária (OB) é do emitente.
+
+Conforme explicitado na Fonte 1: ""é de exclusiva responsabilidade do emitente qualquer pagamento indevido que decorra de erro no preenchimento da ordem bancária"" [Fonte 1].
+
+A Fonte 7 complementa esta informação, estendendo a responsabilidade também ao ordenador de despesas e gestor financeiro, dentro de suas respectivas áreas de competência: ""é de exclusiva responsabilidade do emitente, ordenador de despesas e gestor financeiro, observada sua área de competência, qualquer pagamento indevido que decorra de equivocos em procedimentos ou erro no preenchimento da ordem bancária"" [Fonte 7].
+
+A Fonte 72 também corrobora esta responsabilidade: ""qualquer pagamento indevido, que decorra de erro da ob, será de exclusiva responsabilidade da unidade gestora responsável pelo pagamento"" [Fonte 72].","4.1 Qualquer pagamento indevido, que decorra de erro da OB, será de exclusiva responsabilidade da unidade gestora responsável pelo pagamento.",0.6385329365730286,0.8005931973457336,0.7104382514953613
+Qual a utilidade do documento GPS (Guia da Previdência Social)?,"Com base no contexto fornecido, a GPS (Guia da Previdência Social) tem as seguintes utilidades:
+
+1. Permite registrar o recolhimento das contribuições para a seguridade social por meio de transferências de recursos intra-SIAFI entre a UG recolhedora e a conta única institucional do INSS [Fonte 2]
+
+2. Agiliza o pagamento das contribuições destinadas ao Fundo de Previdência e Assistência Social - FPAS, no âmbito das UG que utilizam o SIAFI [Fonte 3, Fonte 9]
+
+3. É utilizada para recolhimento de receitas da previdência social e da contribuição do salário-educação [Fonte 6, Fonte 13]
+
+4. Serve para recolhimento das receitas do Instituto Nacional do Seguro Social - INSS, referentes a contribuições sociais das empresas, contribuintes individuais, facultativos e segurados especiais [Fonte 1]
+
+5. Pode ser emitida eletronicamente no SIAFI ou através da rede bancária para recolhimento de obrigações previdenciárias [Fonte 12, Fonte 36]","3.1.3 - GPS - Permitir a agilização do pagamento das contribuições destinadas ao Fundo de Previdência e Assistência Social - FPAS, no âmbito das UG que utilizam o SIAFI, e do recolhimento do valor pago, através de transferências INTRA-SIAFI de recursos entre a UG recolhedora e o INSS.",0.7010537385940552,0.8122252821922302,0.7525559663772583
+Qual a utilidade do documento GRU? (Guia de Recolhimento da União),"A GRU (Guia de Recolhimento da União) é um documento padronizado utilizado para:
+
+1. **Ingresso de valores na Conta Única do Tesouro Nacional** [Fonte 1, Fonte 12]
+2. **Pagamentos entre unidades da administração pública federal que utilizam o SIAFI** [Fonte 1, Fonte 12]
+3. **Arrecadação de receitas das unidades do governo federal** via rede bancária ou diretamente no SIAFI [Fonte 1, Fonte 20]
+4. **Substituição do depósito direto na Conta Única** [Fonte 1, Fonte 12]
+
+Seus principais objetivos são:
+- Reduzir custos com despesas bancárias [Fonte 1, Fonte 12]
+- Oferecer maior controle e transparência na classificação das receitas [Fonte 1, Fonte 12]
+
+A GRU é utilizada obrigatoriamente pelas unidades do governo federal para arrecadação de suas receitas, excetuando-se as receitas administradas pelo INSS, RFB e PGFN [Fonte 7].","3.1.4 - GRU, e o documento utilizado pelas unidades do Governo Federal para a arrecadação de suas receitas, exceto para aquelas arrecadadas por DARF e GPS, via rede bancaria ou diretamente no SIAFI quando o recolhedor for Unidade Gestora (UG). Será utilizada para as receitas arrecadadas via rede bancaria pelo contribuinte externo, e destina-se a substituir a modalidade de deposito direto na CTU - Conta Única da União.",0.6503088474273682,0.7304766178131104,0.6880654692649841
+O que é a Administração Pública Federal direta e indireta?,"Com base nos trechos fornecidos, a **Administração Pública Federal direta e indireta** é composta por:
+
+- **Administração direta**: órgãos integrantes da administração federal direta, como ministérios e secretarias[^1][^2]
+- **Administração indireta**: inclui autarquias, fundações, empresas públicas, sociedades de economia mista e demais entidades vinculadas ao governo federal[^1][^2][^3]
+
+Essa estrutura é estabelecida pela Constituição e leis complementares (como a Lei nº 9.986/2000), visando a descentralização de funções e a especialização de atividades[^1][^2][^3].
+
+[^1]: Fonte 3, Fonte 7, Fonte 9, Fonte 10, Fonte 32, Fonte 35
+[^2]: Fonte 40, Fonte 41, Fonte 42, Fonte 44
+[^3]: Fonte 3, Fonte 7, Fonte 9, Fonte 10","3.1 - Administração pública federal direta e indireta - conjunto formado pelos órgãos integrantes da Administração Federal Direta, pelas Autarquias, inclusive as de regime especial, pelas Fundações, instituídas ou mantidas pelo Poder Público Federal, bem como pelas Empresas Públicas e Sociedades de Economia Mista controladas, direta ou indiretamente, pela União;",0.6160608530044556,0.7444732785224915,0.6742070317268372
+O que abrange a Transferência Voluntária?,"Com base nos trechos fornecidos, a Transferência Voluntária (TV) abrange:
+
+1. A entrega de recursos correntes ou de capital a outro ente da Federação (estados, municípios, Distrito Federal) a título de cooperação, auxílio ou assistência financeira [Fonte 2]
+
+2. Recursos transferidos para consórcios públicos ou instituições multigovernamentais [Fonte 1, Fonte 30]
+
+3. Transferências para entidades privadas, com e sem fins lucrativos [Fonte 30]
+
+4. Não inclui transferências decorrentes de mandamento constitucional ou legal, nem as destinadas ao Sistema Único de Saúde [Fonte 2]
+
+5. Não corresponde a contraprestação direta em bens ou serviços ao transferidor [Fonte 30]
+
+6. Os bens ou serviços gerados ou adquiridos com a aplicação desses recursos pertencem ou se incorporam ao patrimônio do ente ou entidade recebedora [Fonte 30]
+
+As transferências voluntárias são regulamentadas pelos arts. 25 e 26 da Lei Complementar nº 101/2000 (Lei de Responsabilidade Fiscal) [Fonte 1].","3.2 – Transferência Voluntária (TV) - compreende a entrega de recursos correntes ou de capital a outro ente da Federação, a título de cooperação, auxílio ou assistência financeira. Nesse caso não se incluem aqueles decorrentes de mandamento constitucional, legal, os destinados ao sistema único de Saúde, bem como as descentralizações de recursos a Estados, Distrito Federal e Municípios para a execução de ações cuja competência seja exclusiva da União.",0.694930911064148,0.7976282238960266,0.7427464127540588
+Qual a definição de profissional em contabilidade?,"Com base no contexto fornecido, a definição de profissional em contabilidade é:
+
+""Entende-se por profissional em contabilidade o servidor público ocupante de cargo efetivo ou de comissão ou empregado público, ou de militar regido, de nível superior ou médio, que tenha formação em contabilidade e esteja com o registro ativo e regular no conselho regional de contabilidade."" [Fonte 1]
+
+Esta definição é corroborada por outras fontes que mencionam a necessidade de registro ativo no conselho regional de contabilidade e habilitação legal para a prática de atos contábeis [Fontes 5, 8, 11, 14, 25, 33].","3.5.3.1 – Entende-se por profissional em contabilidade o servidor público ocupante de cargo efetivo ou de comissão ou empregado público, ou de militar regido, de nível superior ou médio, que tenha formação em contabilidade e esteja com o registro ativo e regular no Conselho Regional de Contabilidade.",0.7662428617477417,0.8808589577674866,0.8195630311965942
+O que é a restrição contábil?,"A restrição contábil é uma inconsistência ou desequilíbrio considerado relevante, pois altera o entendimento sobre as demonstrações contábeis [Fonte 25]. Ela representa situações em que as demonstrações contábeis apresentam inconsistências relevantes que, individualmente ou de forma agregada, podem mudar o entendimento sobre elas, estando portanto em desacordo com as normas contábeis [Fonte 64].
+
+As restrições contábeis são aplicadas quando há diferenças materiais entre o valor divulgado e o valor correto [Fonte 25], e servem como mecanismo para evidenciar problemas que comprometem a qualidade das informações contábeis [Fonte 23]. Elas não são uma ferramenta de punição, mas servem para alertar os usuários das demonstrações contábeis sobre possíveis distorções [Fonte 16].
+
+As descrições das restrições contábeis devem ter uma linguagem compreensível e didática, incluindo quando aplicável os valores das distorções e os efeitos nos elementos das demonstrações contábeis [Fonte 2].","4.3 - RESTRIÇÃO CONTÁBIL: inconsistência ou desequilíbrio considerado relevante, pois altera o entendimento sobre as Demonstrações Contábeis.",0.6610496044158936,0.7164871692657471,0.6876528859138489
+O que se tem como objetivo quando se fala de demonstrações contábeis?,"Com base nos trechos fornecidos, o objetivo das demonstrações contábeis é **assegurar a consistência, transparência e representação fidedigna** das informações financeiras e patrimoniais.  
+
+Isso inclui:  
+- ✅ **Assegurar a consistência e transparência** das informações consolidadas (Fonte 1)  
+- ✅ **Promover a representação fidedigna** das demonstrações contábeis (Fonte 2)  
+- ✅ **Demonstrar o resultado das operações** relacionadas às origens e aplicações de recursos (Fonte 5)  
+- ✅ **Evidenciar ativos, passivos, receitas e despesas** de forma clara e comparável (Fonte 5)  
+- ✅ **Facilitar a compreensão e tomada de decisão** pelos usuários (Fonte 4, Fonte 6)  
+
+Além disso, as demonstrações contábeis servem para:  
+- ✅ **Comprovar a conformidade** com normas contábeis (Fonte 4)  
+- ✅ **Identificar inconsistências** e distorções relevantes (Fonte 6)  
+- ✅ **Consolidar informações** de múltiplas unidades (Fonte 18, Fonte 26)  
+
+Portanto, o objetivo principal é **apresentar informações financeiras e patrimoniais de forma confiável, transparente e útil** para os usuários.  
+
+*As fontes citadas referem-se aos números dos trechos fornecidos no contexto.<｜begin▁of▁sentence｜>","5.1.1 – O objetivo das demonstrações contábeis é divulgar aos usuários os ativos e passivos, as receitas e despesas orçamentárias, bem como as variações patrimoniais aumentativas e diminutivas de determinada entidade, durante o exercício financeiro ou determinado período.",0.6170787811279297,0.7339518070220947,0.6704601049423218
+O que se entende como finalidade no contexto da Conformidade de Operadores?,"Com base nos trechos fornecidos, a ""Conformidade de Operadores"" (ou ""Conformidade de Operadores"") refere-se a um procedimento ou transação específica realizada no sistema.
+
+Conforme explicitado na **Fonte 27 (Chunk 13059, trecho 2)**: ""conformidade de operadores, a ser realizada pelos titulares das ug, ou por operadores por eles indicados"".
+
+Isso indica que a finalidade da Conformidade de Operadores é ser um mecanismo de **controle e validação**, realizado pelos próprios operadores do sistema ou por seus superiores hierárquicos, para garantir a integridade dos dados e a segurança das transações.
+
+Em outras palavras, é um processo onde os próprios usuários do sistema (os ""operadores"") são responsáveis por validar e confirmar a conformidade das operações realizadas, servindo como uma camada adicional de auditoria e segurança.
+
+**Fonte:** [Fonte 27 (Chunk 13059, trecho 2)]<｜begin▁of▁sentence｜>","2.1 - A Conformidade de Operadores, que integra o processo de gerenciamento de acesso e segurança do sistema tem por objetivo automatizar a rotina periódica de confirmação ou desativação de usuários pela própria UG, através de seu Operador Representante ou Substituto.",0.6493963003158569,0.7112674117088318,0.6789252161979675
+"Do que são chamadas as despesas empenhadas, mas não pagas até 31 de dezembro?","Com base nos trechos fornecidos, as despesas empenhadas mas não pagas até 31 de dezembro são chamadas de **restos a pagar** ou **restos a pagar não processados a liquidar**.
+
+Esses termos são explicitamente mencionados em várias fontes, como:
+- Fonte 1: ""restos a pagar as despesas empenhadas, mas nao pagas ate 31 de dezembro""
+- Fonte 12: ""restos a pagar nao processados a liquidar""
+- Fonte 26: ""restos a pagar nao processados a liquidar""
+
+Esses termos referem-se a despesas já empenhadas (ou seja, já registradas como obrigações financeiras) mas que ainda não foram liquidadas (ou seja, o pagamento não foi processado) até o final do exercício financeiro (31 de dezembro).
+
+**Fontes citadas**: [Fonte 1], [Fonte 12], [Fonte 26]<｜begin▁of▁sentence｜>","2.1 - Consideram-se Restos a Pagar as despesas empenhadas, mas não pagas até 31 de dezembro, estando a sua execução condicionada aos limites fixados à conta das fontes de recursos correspondentes, com base na legislação vigente.",0.6480550169944763,0.7145587801933289,0.6796839833259583

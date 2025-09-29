@@ -3,6 +3,7 @@ from transformers import AutoTokenizer
 from sentence_transformers import SentenceTransformer, CrossEncoder
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from typing import List, Tuple
+from torch.nn.functional import cosine_similarity
 import torch
 import requests
 import time
@@ -472,3 +473,61 @@ class RAG:
         result["sucesso"] = True
 
         return result
+
+    def simple_rag_system(
+            self, 
+            chunks: List[str], 
+            passage_embeddings: torch.Tensor, 
+            embedding_model: SentenceTransformer,
+            question: str,
+        ) -> dict:
+            """
+            Sistema RAG simples (sem Hybrid Search e sem ReRanking).
+            Usa similaridade de cosseno para recuperar os chunks mais relevantes.
+            """
+
+            result = {
+                "pergunta": question,
+                "resposta": "",
+                "chunks_utilizados": [],
+                "scores": [],
+                "sucesso": False
+            }
+
+            # Criar embedding da pergunta
+            query_embedding = embedding_model.encode(
+                f"query: {question}",
+                convert_to_tensor=True,
+                show_progress_bar=False,
+                device=self.find_device()
+            )
+
+            # Similaridade de cosseno entre a pergunta e todos os chunks
+            similarities = cosine_similarity(query_embedding, passage_embeddings)
+
+            # Selecionar os top-k chunks mais relevantes
+            top_scores, top_indices = torch.topk(similarities, k=min(self.top_k_retrieval, len(chunks)))
+
+            top_indices = top_indices.cpu().tolist()
+            top_scores = top_scores.cpu().tolist()
+
+            # Geração de resposta
+            if not top_indices:
+                answer = "Desculpe, não encontrei informações relevantes para responder à sua pergunta no documento."
+            else:
+                if self.openrouter_api_key:
+                    answer = self.answer_generation(
+                        query=question,
+                        chunk_indices=top_indices,
+                        chunk_scores=top_scores,
+                        chunks=chunks
+                    )
+                else:
+                    answer = "Chave de API não configurada para geração de resposta."
+
+            result["resposta"] = answer
+            result["chunks_utilizados"] = top_indices
+            result["scores"] = top_scores
+            result["sucesso"] = True
+
+            return result

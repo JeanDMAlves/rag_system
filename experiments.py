@@ -58,7 +58,45 @@ for entry in tqdm(ground_truth, desc='Avaliando perguntas - Sistema Completo'):
 
 #%%
 df = evaluate_with_bertscore(results, ground_truth)
-df.to_csv("./experimentos/bertscore_results_p2.csv", index=False)
+df.to_csv("./experimentos/modelo_1_bertscore_results.csv", index=False)
+# %%
+for _, row in df.iterrows():
+    print(f'PERGUNTA: {row['pergunta']}')
+    print(row['resposta_rag'])
+# %%
+df[['bertscore_precision', 'bertscore_recall', 'bertscore_f1']]
+# %%
+# Experimentos com o sistema sem busca híbrida
+from experimentos.metrics import *
+from tqdm import tqdm
+
+results = []
+for entry in tqdm(ground_truth, desc='Avaliando perguntas - Sistema Reduzido'):
+    question = entry['question']
+    relevant_chunks = entry['relevant_chunks']
+    
+    # Rodar a resposta
+    rag_result = rag_system.simple_rag_system(
+        chunks=chunks,
+        passage_embeddings=embeddings,
+        embedding_model=embedding_model,
+        question=question
+    )
+
+    resposta = rag_result['resposta']
+    pred_chunks = [chunks[idx] for idx in rag_result['chunks_utilizados']]
+
+    results.append({
+        'pergunta': question,
+        'resposta': resposta,
+        'pred_chunks': pred_chunks
+    })
+
+#%%
+df = evaluate_with_bertscore(results, ground_truth)
+df
+#%%
+df.to_csv("./experimentos/modelo_2_bertscore_results.csv", index=False)
 # %%
 for _, row in df.iterrows():
     print(f'PERGUNTA: {row['pergunta']}')
@@ -67,4 +105,7 @@ for _, row in df.iterrows():
 df[['bertscore_precision', 'bertscore_recall', 'bertscore_f1']]
 
 # %%
-# Experimentos com o sistema sem busca híbrida
+print(df['bertscore_f1'].mean())
+print(df['bertscore_f1'].std())
+
+# %%
