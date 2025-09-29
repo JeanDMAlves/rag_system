@@ -135,8 +135,6 @@ else:
                         answer=answer['resposta'],
                         question=question,
                     )
-                    st.write('Resposta:')
-                    st.write(answer['resposta'])
         else:
             st.warning('Digite uma pergunta antes de buscar.')
     
@@ -147,6 +145,6 @@ else:
     ):
         st.write('### Histórico de Perguntas:')
         for iteraction in iteractions:
-            plot_iteraction(st, iteraction)
+            plot_iteraction(st, iteraction, st.session_state.document_file.name)
 
 

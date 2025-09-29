@@ -2,7 +2,6 @@ import sqlite3
 from pathlib import Path
 from datetime import datetime
 from typing import List
-import numpy as np
 import torch
 import json
 
@@ -48,6 +47,21 @@ def save_interaction(document: str, question: str, answer: str):
         """,
         (document, question, answer, datetime.now().isoformat())
     )
+    conn.commit()
+    conn.close()
+
+def delete_answer(document: str, question: str):
+    conn = get_connection()
+    cursor = conn.cursor()
+    cursor.execute(
+        """
+        DELETE FROM history 
+        WHERE document = ? AND
+        question = ? 
+        """,
+        (document, question)
+    )
+
     conn.commit()
     conn.close()
 
@@ -109,3 +123,5 @@ def get_embeddings(filename):
     conn.close()
 
     return (chunks, embeddings)
+
+
