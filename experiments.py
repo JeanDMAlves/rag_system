@@ -2,7 +2,7 @@
 import os
 import json
 from app.utils.rag import RAG
-from app.utils.db import get_embeddings, save_interaction
+from app.utils.db import get_embeddings
 from dotenv import load_dotenv
 
 load_dotenv('./.env')
@@ -28,11 +28,13 @@ with open('./experimentos/ground_truth.json', 'r', encoding='utf-8') as f:
     ground_truth = json.load(f)
 
 # %%
+# Experimentos com o sistema completo
+
 from experimentos.metrics import *
 from tqdm import tqdm
 
 results = []
-for entry in tqdm(ground_truth, desc='Avaliando perguntas'):
+for entry in tqdm(ground_truth, desc='Avaliando perguntas - Sistema Completo'):
     question = entry['question']
     relevant_chunks = entry['relevant_chunks']
     
@@ -55,15 +57,14 @@ for entry in tqdm(ground_truth, desc='Avaliando perguntas'):
     })
 
 #%%
-df = evaluate_with_bertscore(results, ground_truth[0:16])
-print(df)
-df.to_csv("./experimentos/bertscore_results.csv", index=False)
-# %%
-df.columns
+df = evaluate_with_bertscore(results, ground_truth)
+df.to_csv("./experimentos/bertscore_results_p2.csv", index=False)
 # %%
 for _, row in df.iterrows():
     print(f'PERGUNTA: {row['pergunta']}')
     print(row['resposta_rag'])
 # %%
 df[['bertscore_precision', 'bertscore_recall', 'bertscore_f1']]
+
 # %%
+# Experimentos com o sistema sem busca híbrida
