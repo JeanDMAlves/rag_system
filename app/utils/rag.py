@@ -33,6 +33,7 @@ class RAG:
         self.llm_generation_model = llm_generation_model
         self.openrouter_api_key = openrouter_api_key
 
+    # Verifica se existe GPU (CUDA) ou não
     def find_device(self) -> str:
         return 'cuda' if torch.cuda.is_available() else 'cpu'
     
@@ -117,7 +118,7 @@ class RAG:
             if end_char == text_len:
                 break
         
-        # opcional: remover chunks muito curtos ou duplicados consecutivos
+        # remover chunks muito curtos ou duplicados consecutivos
         cleaned = []
         prev = None
         for c in text_chunks:
@@ -138,7 +139,7 @@ class RAG:
         """
         tokenizer = AutoTokenizer.from_pretrained(self.embedding_model)
 
-        # 1. Split inicial com RecursiveCharacterTextSplitter
+        # Split inicial com RecursiveCharacterTextSplitter
         splitter = RecursiveCharacterTextSplitter(
             chunk_size=self.chunk_size * 4,   # usa caracteres como proxy (4 chars ≈ 1 token)
             chunk_overlap=int(self.chunk_size * self.chunk_overlap / 100) * 4,
@@ -146,7 +147,7 @@ class RAG:
         )
         initial_chunks = splitter.split_text(text)
 
-        # 2. Ajustar cada pedaço com base no tokenizer
+        # Ajustar cada pedaço com base no tokenizer
         final_chunks = []
         for chunk in initial_chunks:
             tokens = tokenizer.encode(chunk, add_special_tokens=False)
@@ -166,6 +167,7 @@ class RAG:
 
         return final_chunks
     
+    # Carrega o modelo usado para Embedding no CUDA se possível
     def load_embedding_model(self) -> SentenceTransformer:
         embedding_model = SentenceTransformer(self.embedding_model)
         device = self.find_device()
@@ -173,10 +175,11 @@ class RAG:
             embedding_model = embedding_model.to(device)
         return embedding_model
     
+    # Carrega o modelo de Cross Encoder usado no Re-Ranking
     def load_cross_encoder(self) -> CrossEncoder:
         return CrossEncoder(self.cross_encoder_model)
     
-    # Convertemos cada chunk em vetores numéricos que capturam o significado
+    # Converte cada chunk em vetores numéricos que capturam o significado
     def embeddings(self, chunks, embedding_model: SentenceTransformer):
         passages_prefixed = [f"passage: {chunk}" for chunk in chunks]
         passage_embeddings = embedding_model.encode(
@@ -188,11 +191,8 @@ class RAG:
         )
         return passage_embeddings
 
+    # Faz a chamada à LLM disponibilizada pela OpenRouter
     def llm_api(self, prompt: str, system_prompt: str, max_retries: int = 3) -> str:
-        # TODO: Subsituir self.llm_generation_model por uma lista de modelos, já que
-        # Os modelos gratuitos tendem a dar error_code 429:
-        # Resposta: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"deepseek/deepseek-chat-v3.1:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumula
-
         for attempt in range(max_retries):
             try:
                 response = requests.post(

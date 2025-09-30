@@ -7,11 +7,14 @@ import json
 
 DB_PATH = Path(__file__).parent.parent / 'data' / 'app.db'
 
+# Cria e retorna a conexão com o banco de dados SQLite
 def get_connection() -> sqlite3.Connection:
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
     return conn
 
+# Código para criar as tabelas necessárias: 
+# History (Serve para guardar as perguntas e respostas) e Documents ("Cache" dos chunks e embeddings)
 def create_db():
     conn = get_connection()
     cursor = conn.cursor()
@@ -37,6 +40,7 @@ def create_db():
     conn.commit()
     conn.close()
 
+# Salva cada interação (pergunta) do usuário com o sistema
 def save_interaction(document: str, question: str, answer: str):
     conn = get_connection()
     cursor = conn.cursor()
@@ -50,6 +54,7 @@ def save_interaction(document: str, question: str, answer: str):
     conn.commit()
     conn.close()
 
+# Apaga o histórico de uma pergunta para um documento em específico
 def delete_answer(document: str, question: str):
     conn = get_connection()
     cursor = conn.cursor()
@@ -65,6 +70,7 @@ def delete_answer(document: str, question: str):
     conn.commit()
     conn.close()
 
+# Busca uma resposta no banco à partir de um documento e uma pergunta feita pelo usuário
 def search_answer_by_filename(document: str, question: str):
     conn = get_connection()
     cursor = conn.cursor()
@@ -79,8 +85,9 @@ def search_answer_by_filename(document: str, question: str):
     conn.commit()
     conn.close()
     return rows
-     
-def list_interactions_by_filename(filename, limit=20) -> List[any]:
+
+# Lista todas as perguntas/respostas feitas à um documento     
+def list_interactions_by_filename(filename, limit=100) -> List[any]:
     conn = get_connection()
     cursor = conn.cursor()
     cursor.execute("""
@@ -95,6 +102,7 @@ def list_interactions_by_filename(filename, limit=20) -> List[any]:
     conn.close()
     return rows
 
+# Adiciona os embeddings / chunks para cada arquivo
 def add_embeddings(filename, chunks, embeddings):
     conn = get_connection()
     cursor = conn.cursor()
@@ -107,6 +115,7 @@ def add_embeddings(filename, chunks, embeddings):
     conn.commit()
     conn.close()
 
+# Recupera todos os embeddings para um arquivo em específico
 def get_embeddings(filename):
     conn = get_connection()
     cursor = conn.cursor()
@@ -123,5 +132,3 @@ def get_embeddings(filename):
     conn.close()
 
     return (chunks, embeddings)
-
-
